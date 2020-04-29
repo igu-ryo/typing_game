@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "typing_game", "typing_game\typing_game.csproj", "{1D0C2E4C-9780-4160-B68F-F414D0A438AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D0C2E4C-9780-4160-B68F-F414D0A438AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0C2E4C-9780-4160-B68F-F414D0A438AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0C2E4C-9780-4160-B68F-F414D0A438AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0C2E4C-9780-4160-B68F-F414D0A438AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C7C6C34-DE7B-4BEF-B293-49E45DBF31E3}
+	EndGlobalSection
+EndGlobal
