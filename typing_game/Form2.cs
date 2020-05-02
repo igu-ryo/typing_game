@@ -17,6 +17,7 @@ namespace typing_game
         StreamReader scriptReader;
         StreamReader timeReader;
         long[] charSize = new long[10];
+        long clearSize;
         int sectionLen = 0;
         bool sectionClearFlg;
         public Form2()
@@ -32,6 +33,7 @@ namespace typing_game
             }
             else if (e.KeyChar == (char)Keys.Enter && typingBox.Text == jaTxtLabel.Text)
             {
+                clearSize += typingBox.Text.Length;
                 typingBox.Text = "";
                 e.Handled = true;
 
@@ -49,7 +51,6 @@ namespace typing_game
         {
             scriptReader = new StreamReader(@"..\..\script.txt");
             timeReader = new StreamReader(@"..\..\timeLimit.txt");
-            Console.WriteLine(Application.ExecutablePath);
             gameClearLabel.Hide();
             gamePrepare();
             for (int j = 0; j <= sectionLen; j++)
