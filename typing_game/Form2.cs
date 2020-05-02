@@ -16,8 +16,7 @@ namespace typing_game
         Timer timer1;
         StreamReader scriptReader;
         StreamReader timeReader;
-        long[] charSize = new long[10];
-        long clearSize;
+        long charSize, clearSize;
         int sectionLen = 0;
         bool sectionClearFlg;
         public Form2()
@@ -49,16 +48,7 @@ namespace typing_game
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            scriptReader = new StreamReader(@"..\..\script.txt");
-            timeReader = new StreamReader(@"..\..\timeLimit.txt");
-            gameClearLabel.Hide();
             gamePrepare();
-            for (int j = 0; j <= sectionLen; j++)
-                Console.WriteLine($"charSize[{j}] = {charSize[j]}");
-            setLimit();
-            scriptReader = new StreamReader(@"..\..\script.txt");
-            jaTxtLabel.Text = scriptReader.ReadLine();
-            
         }
 
         private void gameEnd()
@@ -66,28 +56,30 @@ namespace typing_game
             sectionClearFlg = true;// 入力を受け付けないようにする
             jaTxtLabel.Hide();
             typingBox.Hide();
+            if (clearSize == charSize) gameClearLabel.Text = "GAME CLEAR!!";
             gameClearLabel.Show();
+            scoreLabel.Text = $"{(int)(100 * clearSize / charSize)}/100 pt";
+            scoreLabel.Show();
         }
 
-        private void gamePrepare()// スクリプトの区切りごとに文字数を数えて配列におさめる
+        private void gamePrepare()
         {
-            sectionLen = 0;
-            
+            scriptReader = new StreamReader(@"..\..\..\test\script.txt");
+            timeReader = new StreamReader(@"..\..\..\test\timeLimit.txt");
+            gameClearLabel.Hide();
+            scoreLabel.Hide();
+
+            // スクリプトの文字数合計を数える
             while (true)
             {
-                string text;
-                do
-                {
-                    text = scriptReader.ReadLine();
-                    charSize[sectionLen] += text.Length;
-                    if (scriptReader.EndOfStream == true) return;
-                }
-                while (text != "");
-                sectionLen++;
-                if (sectionLen % 10 == 0) Array.Resize(ref charSize, charSize.Length + 10);
-                
+                charSize += scriptReader.ReadLine().Length;
+                if (scriptReader.EndOfStream == true) break;
             }
-            
+
+            // ゲーム開始
+            setLimit();
+            scriptReader = new StreamReader(@"..\..\..\test\script.txt");
+            jaTxtLabel.Text = scriptReader.ReadLine();
         }
 
         private void setTimer(int interval)

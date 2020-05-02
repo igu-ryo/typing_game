@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.jaTxtLabel = new System.Windows.Forms.Label();
             this.typingBox = new System.Windows.Forms.TextBox();
             this.gameClearLabel = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // jaTxtLabel
@@ -60,15 +60,26 @@
             this.gameClearLabel.Name = "gameClearLabel";
             this.gameClearLabel.Size = new System.Drawing.Size(711, 128);
             this.gameClearLabel.TabIndex = 2;
-            this.gameClearLabel.Text = "GAME CLEAR!!";
+            this.gameClearLabel.Text = "GAME OVER!!";
             this.gameClearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.Font = new System.Drawing.Font("MS UI Gothic", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.scoreLabel.Location = new System.Drawing.Point(151, 268);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(486, 73);
+            this.scoreLabel.TabIndex = 3;
+            this.scoreLabel.Text = "label1";
+            this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.gameClearLabel);
             this.Controls.Add(this.typingBox);
             this.Controls.Add(this.jaTxtLabel);
@@ -85,5 +96,6 @@
         private System.Windows.Forms.Label jaTxtLabel;
         private System.Windows.Forms.TextBox typingBox;
         private System.Windows.Forms.Label gameClearLabel;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }
