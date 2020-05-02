@@ -47,14 +47,15 @@ namespace typing_game
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            scriptReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\script.txt");
-            timeReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\timeLimit.txt");
+            scriptReader = new StreamReader(@"..\..\script.txt");
+            timeReader = new StreamReader(@"..\..\timeLimit.txt");
+            Console.WriteLine(Application.ExecutablePath);
             gameClearLabel.Hide();
             gamePrepare();
             for (int j = 0; j <= sectionLen; j++)
                 Console.WriteLine($"charSize[{j}] = {charSize[j]}");
             setLimit();
-            scriptReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\script.txt");
+            scriptReader = new StreamReader(@"..\..\script.txt");
             jaTxtLabel.Text = scriptReader.ReadLine();
             
         }
