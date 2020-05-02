@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="script.txt" />
+    <Content Include="timeLimit.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

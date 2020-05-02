@@ -13,8 +13,12 @@ namespace typing_game
 {
     public partial class Form2 : Form
     {
-        StreamReader sr;
+        Timer timer1;
+        StreamReader scriptReader;
+        StreamReader timeReader;
         long[] charSize = new long[10];
+        int sectionLen = 0;
+        bool sectionClearFlg;
         public Form2()
         {
             InitializeComponent();
@@ -22,32 +26,42 @@ namespace typing_game
 
         private void typingBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter && typingBox.Text == jaTxtLabel.Text)
+            if (sectionClearFlg == true)
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == (char)Keys.Enter && typingBox.Text == jaTxtLabel.Text)
             {
                 typingBox.Text = "";
                 e.Handled = true;
 
-                if (sr.Peek() != -1)
+                string text = scriptReader.ReadLine();
+                if (text == "")
                 {
-                    jaTxtLabel.Text = sr.ReadLine();
+                    sectionClearFlg = true;
                 }
-                else
-                {
-                    gameClear();
-                }
+                jaTxtLabel.Text = text;// 何も表示しない
+                
             }
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            sr = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\script.txt");
-
+            scriptReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\script.txt");
+            timeReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\timeLimit.txt");
             gameClearLabel.Hide();
-            jaTxtLabel.Text = sr.ReadLine();
+            gamePrepare();
+            for (int j = 0; j <= sectionLen; j++)
+                Console.WriteLine($"charSize[{j}] = {charSize[j]}");
+            setLimit();
+            scriptReader = new StreamReader(@"D:\Ryo\workspace\typing_game\typing_game\script.txt");
+            jaTxtLabel.Text = scriptReader.ReadLine();
+            
         }
 
-        private void gameClear()
+        private void gameEnd()
         {
+            sectionClearFlg = true;// 入力を受け付けないようにする
             jaTxtLabel.Hide();
             typingBox.Hide();
             gameClearLabel.Show();
@@ -55,14 +69,65 @@ namespace typing_game
 
         private void gamePrepare()// スクリプトの区切りごとに文字数を数えて配列におさめる
         {
-            long sum;
+            sectionLen = 0;
+            
             while (true)
             {
-                while (sr.ReadLine() != "")
+                string text;
+                do
                 {
-                    
+                    text = scriptReader.ReadLine();
+                    charSize[sectionLen] += text.Length;
+                    if (scriptReader.EndOfStream == true) return;
                 }
+                while (text != "");
+                sectionLen++;
+                if (sectionLen % 10 == 0) Array.Resize(ref charSize, charSize.Length + 10);
+                
             }
+            
+        }
+
+        private void setTimer(int interval)
+        {
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(TimerEventProcessor);
+            timer1.Interval = interval;
+            timer1.Start();
+        }
+
+        private void setLimit()
+        {
+            int timeLimit = Int32.Parse(timeReader.ReadLine());
+            setTimer(timeLimit);
+        }
+
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        {
+            timer1.Stop();
+            if (sectionClearFlg == true)
+            {
+                
+
+                sectionClearFlg = false;
+            }
+            else
+            {
+                // 時間内に終わらなかったら次のセクションへ
+                while (true)
+                {
+                    if (scriptReader.ReadLine() == "") break;
+                    else if (scriptReader.EndOfStream == true)
+                    {
+                        gameEnd();
+                        return;
+                    }
+                }
+                typingBox.Text = "";
+                
+            }
+            setLimit();
+            jaTxtLabel.Text = scriptReader.ReadLine();
         }
     }
 }

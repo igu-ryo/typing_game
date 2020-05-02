@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.jaTxtLabel = new System.Windows.Forms.Label();
             this.typingBox = new System.Windows.Forms.TextBox();
             this.gameClearLabel = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             this.gameClearLabel.TabIndex = 2;
             this.gameClearLabel.Text = "GAME CLEAR!!";
             this.gameClearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             // 
             // Form2
             // 
