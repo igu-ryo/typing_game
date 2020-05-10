@@ -32,6 +32,8 @@
             this.typingBox = new System.Windows.Forms.TextBox();
             this.gameClearLabel = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
+            this.startButton = new System.Windows.Forms.Button();
+            this.countDownLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // jaTxtLabel
@@ -74,17 +76,44 @@
             this.scoreLabel.Text = "label1";
             this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // startButton
+            // 
+            this.startButton.BackColor = System.Drawing.Color.Aquamarine;
+            this.startButton.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.startButton.Location = new System.Drawing.Point(285, 196);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(216, 69);
+            this.startButton.TabIndex = 4;
+            this.startButton.Text = "START";
+            this.startButton.UseVisualStyleBackColor = false;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // countDownLabel
+            // 
+            this.countDownLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.countDownLabel.Font = new System.Drawing.Font("MS UI Gothic", 100F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.countDownLabel.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.countDownLabel.Location = new System.Drawing.Point(315, 142);
+            this.countDownLabel.Name = "countDownLabel";
+            this.countDownLabel.Size = new System.Drawing.Size(166, 159);
+            this.countDownLabel.TabIndex = 5;
+            this.countDownLabel.Text = "1";
+            this.countDownLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.countDownLabel);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.gameClearLabel);
             this.Controls.Add(this.typingBox);
             this.Controls.Add(this.jaTxtLabel);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -97,5 +126,7 @@
         private System.Windows.Forms.TextBox typingBox;
         private System.Windows.Forms.Label gameClearLabel;
         private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Label countDownLabel;
     }
 }

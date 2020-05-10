@@ -30,6 +30,7 @@
         {
             this.gameTitle = new System.Windows.Forms.Label();
             this.playButton = new System.Windows.Forms.Button();
+            this.makeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gameTitle
@@ -46,7 +47,7 @@
             // playButton
             // 
             this.playButton.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.playButton.Location = new System.Drawing.Point(488, 317);
+            this.playButton.Location = new System.Drawing.Point(139, 329);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(167, 57);
             this.playButton.TabIndex = 3;
@@ -54,11 +55,23 @@
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
+            // makeButton
+            // 
+            this.makeButton.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.makeButton.Location = new System.Drawing.Point(457, 329);
+            this.makeButton.Name = "makeButton";
+            this.makeButton.Size = new System.Drawing.Size(167, 57);
+            this.makeButton.TabIndex = 4;
+            this.makeButton.Text = "つくる";
+            this.makeButton.UseVisualStyleBackColor = true;
+            this.makeButton.Click += new System.EventHandler(this.makeButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 453);
+            this.Controls.Add(this.makeButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.gameTitle);
             this.Name = "Form1";
@@ -71,6 +84,7 @@
         #endregion
         private System.Windows.Forms.Label gameTitle;
         private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.Button makeButton;
     }
 }
 
